@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <h1>Properties List</h1>
+    <ul class="list-group list-group-flush">
+        {% for property in properties %}
+            <h2 class="pt-5">{{ property.1 }}</h2>
+                {% for item in item_list %}
+                    {% if item.property_type == property.0 %}
+                        {% if item.status == 1 %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
+                            <a href="{% url 'property_details' item.pk %}"><h3><del>{{ item.property }}</del></h3></a>
+                            <span class="badge bg-primary rounded-pill">CAD {{ item.price }}</span>
+                        </li>
+                        <li class="list-group-item pt-0">
+                            <p>{{ item.description }}</p>
+                        </li>
+                        {% else %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
+                            <a href="{% url 'property_details' item.pk %}"><h3>{{ item.property }}</h3></a>
+                            <span class="badge bg-primary rounded-pill">CAD {{ item.price }}</span>
+                        </li>
+                        <li class="list-group-item pt-0">
+                            <p>{{ item.description }}</p>
+                        </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
