@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container">
-        <h1 class="pt-5">{{ item.property}}</h1>
-        <p>{{ item.description }}</p>
-        <p>CAD {{ item.price }}</p>
+<div class="container">
+
+    <h1 class="pt-3">{{ item.property }}</h1>
+    <div class="card text-bg-primary mb-3" style="max-width: 36rem;">
+        <p class="card-header"><b>Description</b></p>
+        <div class="card-body">
+            <p class="card-text">{{ item.description }}</p>
+        </div>
     </div>
+    <div class="card text-bg-info mb-3" style="max-width: 36rem;">
+        <p class="card-header"><b>Details</b></p>
+        <div class="card-body">
+            <p class="card-text"><b>Property Type:</b> {{ item.property_type }}</p>
+            <p class="card-text"><b>Address:</b> {{ item.address }}</p>
+            <p class="card-text"><b>City:</b> {{ item.city }}</p>
+            <p class="card-text"><b>Bedrooms:</b> {{ item.bedrooms }}</p>
+            <p class="card-text"><b>Has Pool:</b> {{ item.has_pool|yesno:"Yes,No" }}</p>
+            <p class="card-text"><b>Has Garage:</b> {{ item.has_garage|yesno:"Yes,No" }}</p>
+            <p class="card-text"><b>CAD {{ item.price }}</b></p>
+            <p class="card-text"><b>Realtor:</b> {{ item.realtor }}</p>
+        </div>
+    </div>
+</div>
 {% endblock content %}

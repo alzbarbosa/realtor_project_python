@@ -17,3 +17,6 @@ class PropertyList(generic.ListView):
 class PropertyDetails(generic.DetailView):
     model = Item
     template_name = "property_detail.html"
+
+class AboutView(generic.TemplateView):
+    template_name = "about.html"

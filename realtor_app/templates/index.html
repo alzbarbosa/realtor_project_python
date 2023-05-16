@@ -1,27 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-  <h1>Properties List</h1>
+  <h1 class="pt-3">Properties List</h1>
     <ul class="list-group list-group-flush">
         {% for property in properties %}
-            <h2 class="pt-5">{{ property.1 }}</h2>
+            <h2 class="pt-4 text-secondary">{{ property.1 }}</h2>
                 {% for item in item_list %}
                     {% if item.property_type == property.0 %}
                         {% if item.status == 1 %}
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
-                            <a href="{% url 'property_details' item.pk %}"><h3><del>{{ item.property }}</del></h3></a>
+                            <a href="{% url 'property_details' item.pk %}" class="no-underline"><h3><del>{{ item.property }}</del></h3></a>
                             <span class="badge bg-primary rounded-pill">CAD {{ item.price }}</span>
                         </li>
                         <li class="list-group-item pt-0">
-                            <p>{{ item.description }}</p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <p><b>City:</b> {{ item.city }}</p>
+                            </div>
+                            <div class="col-md-6">
+                              <p><b>Bedrooms:</b> {{ item.bedrooms }}</p>
+                            </div>
+                          </div>
                         </li>
                         {% else %}
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 pb-0">
-                            <a href="{% url 'property_details' item.pk %}"><h3>{{ item.property }}</h3></a>
+                            <a href="{% url 'property_details' item.pk %}" class="no-underline"><h3>{{ item.property }}</h3></a>
                             <span class="badge bg-primary rounded-pill">CAD {{ item.price }}</span>
                         </li>
                         <li class="list-group-item pt-0">
-                            <p>{{ item.description }}</p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <p><b>City:</b> {{ item.city }}</p>
+                            </div>
+                            <div class="col-md-6">
+                              <p><b>Bedrooms:</b> {{ item.bedrooms }}</p>
+                            </div>
+                          </div>
                         </li>
                         {% endif %}
                     {% endif %}
